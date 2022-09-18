@@ -1,3 +1,4 @@
+from tkinter import ttk
 import tkinter as tk
 import labels
 
@@ -6,7 +7,9 @@ class LoginWindow:
 
 	def __init__(self, title="Login Prompt", dimensions="500x500"):
 		self.window = self.initialize_window(title, dimensions)
-		self.initialize_labels()
+		u, p = self.initialize_frames()
+		self.username_frame = u
+		self.password_frame = p
 
 	
 	def initialize_window(self, title, dimensions):
@@ -16,14 +19,19 @@ class LoginWindow:
 		return window
 
 
-	def initialize_labels(self):
+	def initialize_frames(self):
+		
+		username_frame = tk.Frame(self.window, relief=tk.RAISED)
+		username_frame.pack()
 
-		username_label = labels.PromptLabel(self.window, "Enter your username:")
-		username_label.display()
+		separator = ttk.Separator(self.window, orient="horizontal")
+		separator.pack()
 
-		error_label = labels.ErrorLabel(self.window, "Whoops! Looks like an error ocurred.")
-		error_label.display()
+		password_frame = tk.Frame(self.window, relief=tk.RAISED)
+		password_frame.pack()
 
+		return username_frame, password_frame
+		
 	
 	def launch(self):
 		self.window.mainloop()
