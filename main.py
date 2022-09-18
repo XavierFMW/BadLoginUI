@@ -1,8 +1,7 @@
-import tkinter as tk
-
-window = tk.Tk()
-window.title("Login Window")
+from windows import LoginWindow
 
 
 if __name__ == "__main__":
-    window.mainloop()
+	main_window = LoginWindow()
+	main_window.launch()
+	
