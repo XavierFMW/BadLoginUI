@@ -2,6 +2,7 @@ import tkinter as tk
 
 DEFAULT_FONT = "Times New Roman"
 DEFAULT_SIZE = 16
+FONT_SIZE_DIFFERENCE = 6
 
 
 class PromptLabel:
@@ -21,8 +22,10 @@ class PromptLabel:
 
 
 class ErrorLabel:
+	
+	Y_PADDING = 5
 
-	def __init__(self, parent, text, font=DEFAULT_FONT, size=(DEFAULT_SIZE - 4)):
+	def __init__(self, parent, text, font=DEFAULT_FONT, size=(DEFAULT_SIZE - FONT_SIZE_DIFFERENCE)):
 		self.label = self.initialize_label(parent, text, font, size)
 
 		
@@ -32,5 +35,5 @@ class ErrorLabel:
 		
 	
 	def display(self):
-		self.label.pack()
+		self.label.pack(pady=self.Y_PADDING)
 

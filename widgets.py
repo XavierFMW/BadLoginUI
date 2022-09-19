@@ -4,6 +4,7 @@ import tkinter as tk
 class DropdownTextEntry:
 
 	CHARSET = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!@#$"
+	Y_PADDING = 15
 
 	def __init__(self, parent, length):
 		self.frame = self.__initialize_frame(parent)
@@ -26,5 +27,5 @@ class DropdownTextEntry:
 
 	
 	def display(self):
-		self.frame.pack(pady=15)
+		self.frame.pack(pady=self.Y_PADDING)
 		

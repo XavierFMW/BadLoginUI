@@ -8,6 +8,7 @@ class LoginWindow:
 
 	USERNAME_LABEL_MESSAGE = "Enter your username below."
 	PASSWORD_LABEL_MESSAGE = "Enter your password below."
+	ERROR_LABEL_MESSAGE = "Whoops! Look like that password was already taken by xX_beefcake_Xx!"
 
 	USERNAME_LENGTH = 8
 	PASSWORD_LENGTH = 10
@@ -17,6 +18,7 @@ class LoginWindow:
 		self.username_frame, self.password_frame = self.__initialize_frames()
 		self.__initialize_labels()
 		self.__initialize_widgets()
+		self.__initialize_buttons()
 
 	
 	def __initialize_window(self, title, dimensions):
@@ -34,11 +36,12 @@ class LoginWindow:
 		username_frame = tk.Frame(self.window, relief=tk.RAISED)
 		username_frame.pack()
 
-		separator = ttk.Separator(self.window, orient="horizontal")
-		separator.pack(fill="x")
+		separator = ttk.Separator(self.window, orient="horizontal").pack(fill="x")
 
 		password_frame = tk.Frame(self.window, relief=tk.RAISED)
 		password_frame.pack()
+
+		separator = ttk.Separator(self.window, orient="horizontal").pack(fill="x")
 
 		return username_frame, password_frame
 
@@ -60,6 +63,18 @@ class LoginWindow:
 		password_widget = widgets.DropdownTextEntry(self.password_frame, self.PASSWORD_LENGTH)
 		password_widget.display()
 		
+	
+	def __initialize_buttons(self):
+		
+		button = tk.Button(self.window, text="Submit", command=self.__show_error)
+		button.pack(pady=10)
+
+
+	def __show_error(self):
+		
+		error_label = labels.ErrorLabel(self.password_frame, self.ERROR_LABEL_MESSAGE)
+		error_label.display()
+
 	
 	def launch(self):
 		self.window.mainloop()
